@@ -1,0 +1,30 @@
+﻿body {
+}
+
+
+.products img {
+    height: 250px;
+    width: 250px;
+    background: rgb(205, 205, 205);
+}
+
+.productpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.products {
+}
+
+.price {
+    font-weight: 700;
+}
+
+.addToCartBtn {
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 17px;
+    cursor: pointer;
+    height: 30px;
+}

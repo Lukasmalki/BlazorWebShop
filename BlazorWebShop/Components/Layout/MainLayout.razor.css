@@ -1,4 +1,19 @@
-.page {
+/*.productpage {
+    display: flex;
+}
+
+.products {
+    width: 200px;
+    background: green;
+}
+
+.products img {
+    width: 200px;
+    background: gray;
+}
+*/
+
+/*.page {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -95,4 +110,4 @@ main {
         position: absolute;
         right: 0.75rem;
         top: 0.5rem;
-    }
+    }*/

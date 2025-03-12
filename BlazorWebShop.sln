@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebShop", "BlazorWebShop\BlazorWebShop.csproj", "{19859932-E7F2-4655-8C4E-3DDEC768D518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{78059D1F-A1E5-4DB7-ABC9-421C778C9188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "BackEnd\BackEnd.csproj", "{3BF6DBAA-6022-42B3-A1CF-474C3A8AA18B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{19859932-E7F2-4655-8C4E-3DDEC768D518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19859932-E7F2-4655-8C4E-3DDEC768D518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19859932-E7F2-4655-8C4E-3DDEC768D518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78059D1F-A1E5-4DB7-ABC9-421C778C9188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78059D1F-A1E5-4DB7-ABC9-421C778C9188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78059D1F-A1E5-4DB7-ABC9-421C778C9188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78059D1F-A1E5-4DB7-ABC9-421C778C9188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF6DBAA-6022-42B3-A1CF-474C3A8AA18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF6DBAA-6022-42B3-A1CF-474C3A8AA18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF6DBAA-6022-42B3-A1CF-474C3A8AA18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF6DBAA-6022-42B3-A1CF-474C3A8AA18B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

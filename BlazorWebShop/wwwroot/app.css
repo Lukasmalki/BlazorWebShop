@@ -2,7 +2,37 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-a, .btn-link {
+.sidebar {
+    background: purple;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding-left: 20px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: row;
+    margin-left: 60px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 40px;
+}
+
+.navbar-brand {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+
+
+/*a, .btn-link {
     color: #006bb7;
 }
 
@@ -57,4 +87,4 @@ h1:focus {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
-}
+}*/
