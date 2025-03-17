@@ -1,5 +1,40 @@
-﻿<h3>Cart</h3>
+﻿@page "/cart"
+@rendermode InteractiveServer
+@using ClassLibrary
+@inject CartService CartService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
+
+<h3>Cart</h3>
+<div class="cartPage">
+	<div class="cartWithProducts">
+		<div class="topSection">
+
+			@if (CartService.ProductsInCart.Any())
+			{
+				<ul>
+					@foreach (var product in CartService.ProductsInCart)
+					{
+						<li>@product.Name</li>
+
+					}
+				</ul>
+			}
+			else
+			{
+				<p>Varukorgen är tom.</p>
+			} 
+
+		</div>
+		<div class="bottomSection">
+			<button class="clearFromCartBtn" @onclick="() => CartService.ClearAllFromCart()">Töm varukorg</button>
+		</div>
+	</div>
+</div>
 @code {
-
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		CartService.ProductsInCart = await localStorage.GetItemAsync<List<Product>>("cart") ?? new List<Product>();
+		StateHasChanged();
+	}
 }

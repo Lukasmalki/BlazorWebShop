@@ -1,4 +1,17 @@
 
+.fas.fa-shopping-cart {
+    color: white;
+    font-size: 25px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.nav-scrollable {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 /*.navbar-toggler {
     appearance: none;
     cursor: pointer;

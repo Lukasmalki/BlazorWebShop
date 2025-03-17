@@ -5,7 +5,9 @@
 .products img {
     height: 250px;
     width: 250px;
-    background: rgb(205, 205, 205);
+    background: rgb(230, 230, 230);
+    object-fit: contain;
+    margin-bottom: 15px;
 }
 
 .productpage {
@@ -15,6 +17,19 @@
 }
 
 .products {
+    width: 250px;
+    margin-bottom: 45px;
+}
+
+.productinfo {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+}
+
+.productinfo p {
+    margin: 0px;
 }
 
 .price {

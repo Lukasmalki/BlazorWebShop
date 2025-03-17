@@ -1,4 +1,6 @@
+using Blazored.LocalStorage;
 using BlazorWebShop.Components;
+using ClassLibrary;
 
 namespace BlazorWebShop
 {
@@ -11,8 +13,12 @@ namespace BlazorWebShop
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+            builder.Services.AddScoped<CartService>();
+			builder.Services.AddBlazoredLocalStorage();
 
-            var app = builder.Build();
+
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
