@@ -15,6 +15,10 @@ namespace BlazorWebShop
                 .AddInteractiveServerComponents();
             builder.Services.AddScoped<CartService>();
 			builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddHttpClient("MinimalAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7079");
+            });
 
 
 

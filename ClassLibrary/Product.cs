@@ -8,6 +8,6 @@
 
 		public double Price { get; set; }
 
-		public string? imgURL { get; set; }
+		public string? ImgURL { get; set; }
 	}
 }
