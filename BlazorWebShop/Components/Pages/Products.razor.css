@@ -13,7 +13,9 @@
 .productpage {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 20px;
+    
 }
 
 .products {
@@ -21,25 +23,47 @@
     margin-bottom: 45px;
 }
 
+@media (max-width: 768px) {
+    .productpage {
+        justify-content: center;
+        margin-top: 25px;
+    }
+}
+
 .productinfo {
-  display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    height: 100px;
 }
 
 .productinfo p {
-    margin: 0px;
+    margin: 0;
 }
 
 .price {
     font-weight: 700;
+    margin-top: 15px !important;
+}
+
+.productBtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .addToCartBtn {
     border-radius: 15px;
     border: 1px solid gray;
-    font-size: 17px;
+    font-size: 13px;
+    cursor: pointer;
+    height: 30px;
+}
+
+.productLinkBtn {
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 13px;
     cursor: pointer;
     height: 30px;
 }

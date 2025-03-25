@@ -1,0 +1,82 @@
+﻿@page "/products/{id:int}"
+@rendermode InteractiveServer
+@using BackEnd
+@using ClassLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject CartService CartService
+
+
+@if (product != null)
+{
+	<div class="productDetailContainer">
+		<div>
+			<img class="shirtImg" src="@product.ImgURL" alt="@product.Name" />
+		</div>
+		<div class="productDetails">
+			<h2>@product.Name</h2>
+			<p>@product.Description</p>
+			<p class="price">@product.Price&nbsp;kr</p>
+			<button class="addToCartBtn" @onclick="() => CartService.AddToCart(product)">Lägg till i varukorg</button>
+		</div>
+	</div>
+
+}
+else
+{
+	<p>Loading...</p>
+}
+
+@code {
+	[Parameter] public int Id { get; set; }
+	private Product? product;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await FetchData();
+	}
+
+	private async Task FetchData()
+	{
+		using HttpClient? client = HttpClientFactory.CreateClient("MinimalAPI");
+		product = await client.GetFromJsonAsync<Product>($"/products/{Id}");
+	}
+
+
+	// private async Task AddToCartWithDebug()
+	// {
+	// 	try
+	// 	{
+	// 		Console.WriteLine("AddToCart button clicked");
+	// 		await CartService.AddToCart(product);
+	// 		Console.WriteLine("Product added to cart");
+	// 	}
+	// 	catch (Exception ex)
+	// 	{
+	// 		Console.WriteLine($"Error: {ex.Message}");
+	// 	}
+	// }
+	// private async Task FetchData()
+	// {
+	// 	try
+	// 	{
+	// 		HttpClient.BaseAddress = new Uri("https://localhost:7034");
+
+	// 		// Fetch the product data from the API
+	// 		product = await HttpClient.GetFromJsonAsync<Product>($"/products/{Id}");
+
+	// 		if (product == null)
+	// 		{
+	// 			Console.WriteLine($"No product found for ID: {Id}");
+	// 		}
+	// 		else
+	// 		{
+	// 			Console.WriteLine($"Product fetched: {product.Name}");
+	// 		}
+	// 	}
+	// 	catch (Exception ex)
+	// 	{
+	// 		Console.WriteLine($"Error fetching data: {ex.Message}");
+	// 	}
+	// }
+
+}

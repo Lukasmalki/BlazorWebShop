@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.confirmOrderContainer {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(230, 230, 230);
+    width: 380px;
+    padding: 25px;
+}
+
+@media (max-width: 768px) {
+    .confirmOrderContainer {
+        flex-direction: column;
+        width: 300px;
+    }
+}
+
+.productsInCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.confirmOrderBtn {
+    cursor: pointer;
+    height: 50px;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 15px;
+}

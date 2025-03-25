@@ -1,0 +1,79 @@
+﻿@page "/confirmorder"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@inject CartService CartService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using ClassLibrary
+@using Microsoft.AspNetCore.WebUtilities
+
+<h3>ConfirmOrder</h3>
+
+<div class="confirmOrderContainer">
+
+    <div class="userInfo">
+        <p>Full name: @userInfo.Fullname</p>
+        <p>Address: @userInfo.StreetAdress</p>
+        <p>Postal Code: @userInfo.PostalCode</p>
+        <p>City: @userInfo.City</p>
+    </div>
+
+    <div class="productsInCart">
+        @if (CartService.ProductsInCart.Any())
+        {
+            <h3>Produkter</h3>
+            <ul>
+                @foreach (var product in CartService.ProductsInCart)
+                {
+                    <li>@product.Name</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Varukorgen är tom.</p>
+        }
+        <button class="confirmOrderBtn" @onclick="() => ConfirmedOrder()">Bekräfta order</button>
+    </div>
+
+</div>
+<p class="message">@message</p>
+
+@code {
+    private UserInfo userInfo = new UserInfo();
+    private string? message;
+
+    protected override void OnInitialized()
+    {
+        var uri = NavigationManager.Uri;
+        var uriQuery = new Uri(uri).Query;
+
+        if (!string.IsNullOrEmpty(uriQuery))
+        {
+            var queryParams = System.Web.HttpUtility.ParseQueryString(uriQuery);
+            userInfo.Fullname = queryParams["fullname"];
+            userInfo.StreetAdress = queryParams["streetadress"];
+            userInfo.PostalCode = queryParams["postalcode"];
+            userInfo.City = queryParams["city"];
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        CartService.ProductsInCart = await localStorage.GetItemAsync<List<Product>>("cart") ?? new List<Product>();
+        StateHasChanged();
+    }
+
+    public async Task ConfirmedOrder() {
+
+        if(CartService.ProductsInCart.Any()) {
+            message = "Tack för din beställning!";
+
+            await Task.Delay(1500);
+            await CartService.ClearAllFromCart();
+            NavigationManager.NavigateTo("/");
+        }
+        else {
+            message = "Din varukorg är tom";
+        }
+    }
+}

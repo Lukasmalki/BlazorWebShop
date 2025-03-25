@@ -17,9 +17,15 @@
     justify-content: space-between;
 }
 
+.topSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .bottomSection {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .clearFromCartBtn {
@@ -34,4 +40,33 @@
 
 ul {
     list-style-type: none;
+    margin: 0px;
+    padding: 0;
+}
+
+.continueFromCartBtn {
+    height: 50px;
+    width: 200px;
+    border: none;
+    color: white;
+    background: green;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.inputs {
+    height: 25px;
+    margin-bottom: 25px;
 }

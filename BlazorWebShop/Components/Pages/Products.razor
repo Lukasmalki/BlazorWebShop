@@ -1,10 +1,8 @@
 ﻿@page "/products"
 @rendermode InteractiveServer
 @using ClassLibrary
-@using BlazorWebShop
 @using BackEnd
 @inject CartService CartService
-@inject IHttpClientFactory HttpClientFactory
 
 <div class="main">
 	<div class="productpage">
@@ -15,13 +13,18 @@
 					<a><img src=@product.ImgURL /></a>
 				</div>
 				<div class="productinfo">
-					<p>@product.Name</p>
-					<p>@product.Description</p>
-					<p class="price">@product.Price&nbsp;kr</p>
-					<button class="addToCartBtn" @onclick="() => CartService.AddToCart(product)">Lägg till i varukorg</button>
-					@* <button @onclick="async() => await FetchData()">Lägg</button> *@
-					@* <button @onclick="() => CartService.AddToCart(product)">Lägg till i varukorg</button> *@
-
+					<div>
+						<p>@product.Name</p>
+						<p class="price">@product.Price&nbsp;kr</p>
+					</div>
+					<div class="productBtns">
+						<NavLink href="@($"/products/{product.Id}")">
+							<button class="productLinkBtn">
+								Gå till produkt
+							</button>
+						</NavLink>
+						<button class="addToCartBtn" @onclick="() => CartService.AddToCart(product)">Lägg till i varukorg</button>
+					</div>
 				</div>
 			</div>
 		}

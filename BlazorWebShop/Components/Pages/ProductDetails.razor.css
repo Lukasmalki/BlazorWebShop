@@ -1,0 +1,37 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+.productDetailContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-right: 50px;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .productDetailContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0 0 0;
+    }
+
+    .shirtImg {
+        width: 300px;
+    }
+}
+
+.shirtImg {
+    background: rgb(230, 230, 230);
+}
+
+.addToCartBtn {
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 13px;
+    cursor: pointer;
+    height: 30px;
+}

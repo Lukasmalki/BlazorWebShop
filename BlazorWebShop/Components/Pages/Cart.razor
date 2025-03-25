@@ -3,38 +3,81 @@
 @using ClassLibrary
 @inject CartService CartService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
-
+@inject NavigationManager NavigationManager
 
 <h3>Cart</h3>
 <div class="cartPage">
 	<div class="cartWithProducts">
 		<div class="topSection">
-
+			<div>
 			@if (CartService.ProductsInCart.Any())
 			{
 				<ul>
 					@foreach (var product in CartService.ProductsInCart)
 					{
 						<li>@product.Name</li>
-
 					}
 				</ul>
 			}
 			else
 			{
 				<p>Varukorgen är tom.</p>
-			} 
+			}
+			</div>
+			<div>
+				<EditForm class="form" Model="@userInfo" OnValidSubmit="HandleSubmit">
+					<DataAnnotationsValidator />
+					<ValidationSummary />
+
+					<div>
+						<label for="fullName">Fullständigt namn</label>
+						<InputText class="inputs" @bind-Value="userInfo.Fullname" id="fullName" />
+					</div>
+
+					<div>
+						<label for="streetAdress">Address</label>
+						<InputText class="inputs" @bind-Value="userInfo.StreetAdress" id="streetAdress" />
+					</div>
+
+					<div>
+						<label for="postalCode">Postkod</label>
+						<InputText class="inputs" @bind-Value="userInfo.PostalCode" id="postalCode" />
+					</div>
+
+					<div>
+						<label for="city">Stad</label>
+						<InputText class="inputs" @bind-Value="userInfo.City" id="city" />
+					</div>
+						<button type="submit" class="continueFromCartBtn">Fortsätt</button>
+				</EditForm>
+			</div>
 
 		</div>
 		<div class="bottomSection">
-			<button class="clearFromCartBtn" @onclick="() => CartService.ClearAllFromCart()">Töm varukorg</button>
+			<div>
+				<button class="clearFromCartBtn" @onclick="() => CartService.ClearAllFromCart()">Töm varukorg</button>
+			</div>
+			<div>
+
+			</div>
 		</div>
 	</div>
 </div>
 @code {
+	private UserInfo userInfo = new UserInfo();
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		CartService.ProductsInCart = await localStorage.GetItemAsync<List<Product>>("cart") ?? new List<Product>();
 		StateHasChanged();
+	}
+
+	private void HandleSubmit()
+	{
+		var queryString = $"?fullname={Uri.EscapeDataString(userInfo.Fullname)}" +
+								$"&streetadress={Uri.EscapeDataString(userInfo.StreetAdress)}" +
+								$"&postalcode={Uri.EscapeDataString(userInfo.PostalCode)}" +
+								$"&city={Uri.EscapeDataString(userInfo.City)}";
+
+		NavigationManager.NavigateTo("/confirmorder" + queryString);
 	}
 }
